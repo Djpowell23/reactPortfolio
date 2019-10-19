@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <>
+    <div className="container">
       <h2>About</h2>
       <p>
         Doggo ipsum aqua doggo boof smol borking doggo with a long snoot for
@@ -40,7 +40,7 @@ const About = () => {
         maximum borkdrive noodle horse, wrinkler adorable doggo puggorino what a
         nice floof.
       </p>
-    </>
+    </div>
   );
 };
 
