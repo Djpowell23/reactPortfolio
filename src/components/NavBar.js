@@ -3,31 +3,57 @@ import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <Link class="navbar-brand" to="/">
-          Title
-        </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <NavLink class="nav-item nav-link active" to="/">
-              Home <span class="sr-only">(current)</span>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <Link className="navbar-brand" to="/">
+        Title
+      </Link>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-link">
+            <NavLink
+              className="nav-link"
+              to="/"
+              isActive={() =>
+                window.location.pathname === "/" ||
+                window.location.pathname === "/about"
+              }
+              activeClassName="active"
+            >
+              About
             </NavLink>
-          </div>
-        </div>
-      </nav>
-    </>
+          </li>
+          <li className="nav-link">
+            <NavLink
+              className="nav-link"
+              to="/portfolio"
+              activeClassName="active"
+            >
+              Portfolio
+            </NavLink>
+          </li>
+          <li className="nav-link">
+            <NavLink
+              className="nav-link"
+              to="/contact"
+              activeClassName="active"
+            >
+              Contact
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 
