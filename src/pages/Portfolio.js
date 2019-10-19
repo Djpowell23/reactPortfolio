@@ -29,7 +29,29 @@ const PortfolioWrapper = styled.section`
 
 class Portfolio extends Component {
   state = {
-    currentProject: ""
+    projectTitle: "",
+    image: "",
+    code: "",
+    site: "",
+    techUsed: [],
+    description: ""
+  };
+
+  componentDidMount() {
+    console.log("state:", this.state);
+  }
+
+  //   May need to create api for projects to get this to work
+  handleProjectClick = event => {
+    event.preventDefault();
+    const project = event.target;
+    const projectObj = {
+      projectTitle: project.title,
+      code: project.code,
+      site: project.site
+    };
+    this.setState(projectObj);
+    console.log("event.target:", project);
   };
 
   render() {
@@ -40,7 +62,15 @@ class Portfolio extends Component {
             <h2>Projects</h2>
             <hr></hr>
             <ul className="list-group">
-              <li className="list-group-item">Say Hay</li>
+              <li
+                className="list-group-item"
+                onClick={this.handleProjectClick}
+                title="Clicking Bad"
+                site="https://djpowell23.github.io/clickingBad/"
+                code="https://github.com/Djpowell23/clickingBad"
+              >
+                Clicking Bad
+              </li>
               <li className="list-group-item">Postivism</li>
               <li className="list-group-item">Tunedea</li>
               <li className="list-group-item">clickingBad</li>
@@ -62,7 +92,7 @@ class Portfolio extends Component {
             </p>
             <hr></hr>
             <Row>
-              <Col md="6">
+              <Col md="6" className="tech-used">
                 <h2>Technologies Used</h2>
                 <hr></hr>
                 <ul className="list-group">
@@ -76,7 +106,7 @@ class Portfolio extends Component {
               <Col md="6">
                 <h2>Preview Image</h2>
                 <hr></hr>
-                <img src={this.state.image} alt="Preview Image" />
+                <img src={this.state.selectedImage} alt="Preview Image" />
               </Col>
             </Row>
             <Row>
