@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
+import API from "../utils/API";
 
 const PortfolioWrapper = styled.section`
   margin-left: 15px;
   margin-right: 15px;
   text-align: center;
+
+  img {
+    height: 250px;
+    border: 1px solid grey;
+  }
 
   h2 {
     margin-top: 1rem;
@@ -41,17 +47,18 @@ class Portfolio extends Component {
     console.log("state:", this.state);
   }
 
-  //   May need to create api for projects to get this to work
+  // May need to create api for projects to get this to work
+  // Create new State Object
   handleProjectClick = event => {
     event.preventDefault();
-    const project = event.target;
-    const projectObj = {
-      projectTitle: project.title,
-      code: project.code,
-      site: project.site
-    };
-    this.setState(projectObj);
-    console.log("event.target:", project);
+    // const project = event.target;
+    // const projectObj = {
+    //   projectTitle: project.title,
+    //   code: project.code,
+    //   site: project.site
+    // };
+    // this.setState(projectObj);
+    // console.log("event.target:", project);
   };
 
   render() {
@@ -66,14 +73,23 @@ class Portfolio extends Component {
                 className="list-group-item"
                 onClick={this.handleProjectClick}
                 title="Clicking Bad"
-                site="https://djpowell23.github.io/clickingBad/"
-                code="https://github.com/Djpowell23/clickingBad"
               >
                 Clicking Bad
               </li>
-              <li className="list-group-item">Postivism</li>
-              <li className="list-group-item">Tunedea</li>
-              <li className="list-group-item">clickingBad</li>
+              <li
+                className="list-group-item"
+                onClick={this.handleProjectClick}
+                title="Postivism"
+              >
+                Postivism
+              </li>
+              <li
+                className="list-group-item"
+                onClick={this.handleProjectClick}
+                title="Tunedea"
+              >
+                Tunedea
+              </li>
             </ul>
           </Col>
           <Col md="9">
@@ -82,7 +98,7 @@ class Portfolio extends Component {
             <p className="project-description">
               Say Hay is an iOS application developed to help you keep in touch
               with friends, family and associates. In this fast paced world we
-              often do not have time to chat with all the firends that we have
+              often do not have time to chat with all the friends that we have
               stored in our phones. At one time, long ago, it was the goal of
               social media to help solve this problem. However, it seems that
               social media has become more media and less social. Say Hay is
@@ -106,7 +122,7 @@ class Portfolio extends Component {
               <Col md="6">
                 <h2>Preview Image</h2>
                 <hr></hr>
-                <img src={this.state.selectedImage} alt="Preview Image" />
+                <img src={this.state.image} alt="Preview Image" />
               </Col>
             </Row>
             <Row>
