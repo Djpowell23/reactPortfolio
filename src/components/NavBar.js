@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <Link className="navbar-brand" to="/">
-        Title
+        Devin Powell
       </Link>
       <button
         className="navbar-toggler"
@@ -51,6 +51,9 @@ const NavBar = () => {
               Contact
             </NavLink>
           </li>
+          <a class="btn btn-lg btn-social-icon btn-github">
+            <span class="fa fa-github"></span>
+          </a>
         </ul>
       </div>
     </nav>
