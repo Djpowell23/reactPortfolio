@@ -51,9 +51,9 @@ const NavBar = () => {
               Contact
             </NavLink>
           </li>
-          <a class="btn btn-lg btn-social-icon btn-github">
+          {/* <a class="btn btn-lg btn-social-icon btn-github">
             <span class="fa fa-github"></span>
-          </a>
+          </a> */}
         </ul>
       </div>
     </nav>
