@@ -51,14 +51,27 @@ class Portfolio extends Component {
   // Create new State Object
   handleProjectClick = event => {
     event.preventDefault();
-    // const project = event.target;
-    // const projectObj = {
-    //   projectTitle: project.title,
-    //   code: project.code,
-    //   site: project.site
-    // };
-    // this.setState(projectObj);
-    // console.log("event.target:", project);
+    const project = event.target;
+    const title = project.title;
+    console.log("event.target.title:", title);
+
+    // What I want returned:
+    const response = {
+      projectTitle: "Clicking Bad",
+      code: "https://www.github.com/Djpowell23/clickingBad",
+      site: "https://djpowell23.github.io/clickingBad/",
+      description:
+        "Memory game where you try to click all images without making any duplicates.",
+      techUsed: ["React", "ReactStrap", "react-router-dom"]
+    };
+
+    // New State
+    let newState = { ...this.state };
+
+    // How I handle the response
+    newState = response;
+
+    this.setState(newState);
   };
 
   render() {
@@ -93,44 +106,62 @@ class Portfolio extends Component {
             </ul>
           </Col>
           <Col md="9">
-            <h2>Project Title</h2>
+            {/* If a project is selected, show the title */}
+            {this.state.projectTitle ? (
+              <h2>{this.state.projectTitle}</h2>
+            ) : (
+              <h2>Project Title</h2>
+            )}
             <hr></hr>
-            <p className="project-description">
-              Say Hay is an iOS application developed to help you keep in touch
-              with friends, family and associates. In this fast paced world we
-              often do not have time to chat with all the friends that we have
-              stored in our phones. At one time, long ago, it was the goal of
-              social media to help solve this problem. However, it seems that
-              social media has become more media and less social. Say Hay is
-              intended to get back to the roots of using technology to improve
-              our social interactions and help us connect with the people that
-              we want to communicate with.
-            </p>
+            {/* If a project is selected, show the description */}
+            {this.state.description ? (
+              <p>{this.state.description}</p>
+            ) : (
+              <p>Project Description</p>
+            )}
             <hr></hr>
             <Row>
               <Col md="6" className="tech-used">
                 <h2>Technologies Used</h2>
                 <hr></hr>
                 <ul className="list-group">
-                  <li className="list-group-item">React</li>
-                  <li className="list-group-item">MongoDB</li>
-                  <li className="list-group-item">JavaScript</li>
-                  <li className="list-group-item">Reactstrap</li>
-                  <li className="list-group-item">Axios</li>
+                  {/* Will need to map through the array in state */}
+                  {this.state.techUsed.map(tech => (
+                    <li className="list-group-item">{tech}</li>
+                  ))}
+                  {/* End Map */}
                 </ul>
               </Col>
               <Col md="6">
                 <h2>Preview Image</h2>
                 <hr></hr>
-                <img src={this.state.image} alt="Preview Image" />
+                {/* Hide image until project is selected */}
+                {this.state.image ? (
+                  <img src={this.state.image} alt="Preview Image" />
+                ) : (
+                  <span></span>
+                )}
               </Col>
             </Row>
             <Row>
+              {/* Hide Buttons if no project is selected */}
               <Col md="6">
-                <button className="btn btn-dark">View the Code</button>
+                {this.state.projectTitle ? (
+                  <button className="btn btn-dark" value={this.state.code}>
+                    View the Code
+                  </button>
+                ) : (
+                  <p>Select a project to see details </p>
+                )}
               </Col>
               <Col md="6">
-                <button className="btn btn-dark">View the Site</button>
+                {this.state.projectTitle ? (
+                  <button className="btn btn-dark" value={this.state.site}>
+                    View the Site
+                  </button>
+                ) : (
+                  <p>Select a project to see details</p>
+                )}
               </Col>
             </Row>
           </Col>
