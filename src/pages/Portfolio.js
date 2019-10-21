@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
 import styled from "styled-components";
+import Postivism from "../images/postivism.jpg";
 import API from "../utils/API";
 
 const PortfolioWrapper = styled.section`
@@ -53,11 +54,12 @@ class Portfolio extends Component {
     event.preventDefault();
     const project = event.target;
     const title = project.title;
-    console.log("event.target.title:", title);
+    console.log("title:", title);
 
     // What I want returned:
     const response = {
       projectTitle: "Clicking Bad",
+      image: "",
       code: "https://www.github.com/Djpowell23/clickingBad",
       site: "https://djpowell23.github.io/clickingBad/",
       description:
@@ -127,7 +129,9 @@ class Portfolio extends Component {
                 <ul className="list-group">
                   {/* Will need to map through the array in state */}
                   {this.state.techUsed.map(tech => (
-                    <li className="list-group-item">{tech}</li>
+                    <li className="list-group-item" key={tech}>
+                      {tech}
+                    </li>
                   ))}
                   {/* End Map */}
                 </ul>

@@ -28,6 +28,7 @@ const AboutWrapper = styled.section`
   .email {
     :hover {
       cursor: pointer;
+      background-color: grey;
     }
   }
 `;
@@ -58,6 +59,28 @@ const About = () => {
             and decided to pursue his passion for technology and programming in
             order to be a part of the future.
           </p>
+          <hr></hr>
+          <h2>Proficient Languages / Technologies:</h2>
+          <Row>
+            <Col md="6">
+              <ul className="list-group">
+                <li className="list-group-item">HTML5</li>
+                <li className="list-group-item">CSS</li>
+                <li className="list-group-item">JavaScript</li>
+                <li className="list-group-item">Node.JS</li>
+                <li className="list-group-item">Express</li>
+              </ul>
+            </Col>
+            <Col md="6">
+              <ul className="list-group">
+                <li className="list-group-item">MySQL</li>
+                <li className="list-group-item">MongoDB</li>
+                <li className="list-group-item">React</li>
+                <li className="list-group-item">React-Native</li>
+                <li className="list-group-item">Mongoose</li>
+              </ul>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </AboutWrapper>
